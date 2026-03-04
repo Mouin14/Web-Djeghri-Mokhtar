@@ -1,0 +1,256 @@
+You are a senior React developer and UI/UX expert. Build a complete,
+production-ready Landing Page for an official Algerian government
+hospital. This is a graduation project and must look exceptional.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏥 HOSPITAL INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Official Arabic Name:   المؤسسة الاستشفائية المتخصصة في جراحة القلب
+                        الدكتور الجغري مختار — قسنطينة
+Official French Name:   Établissement Hospitalier Spécialisé (EHS)
+                        en Chirurgie Cardiaque Dr. Djeghri Mokhtar
+                        — Constantine
+Official English Name:  Dr. Djeghri Mokhtar Specialized Hospital
+                        for Cardiac Surgery — Constantine, Algeria
+
+Type: Algerian Public Establishment (Administrative character)
+      All care is FREE OF CHARGE
+Ministry: Ministère de la Santé — République Algérienne
+          Démocratique et Populaire
+Decree: Décret exécutif N° 97/465 du 02 décembre 1997
+Category: Category B public health establishment
+Specialization: Cardiac surgery, Vascular surgery,
+                Interventional Cardiology
+Location: Cité El Riad Benchicou, Constantine, Algeria
+Capacity: 80 beds (10 ICU, 35 male ward, 35 female ward)
+Medical activities:
+  • Open-heart cardiac surgery
+  • Congenital cardiac surgery
+  • Vascular surgery & coronary bypass
+  • Coronary angiography & angioplasty
+  • Specialized consultations & postoperative follow-up
+  • Medical imaging (echo-Doppler)
+Coverage: Eastern Algeria
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌍 MULTILINGUAL SYSTEM (REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Implement a full i18n system with 3 languages:
+  - French (fr) — DEFAULT
+  - Arabic (ar)
+  - English (en)
+
+Implementation rules:
+- Create a translations object with keys for ALL text in the page
+- Store current language in useState (default: 'fr')
+- When Arabic is selected:
+    • Set document.dir = 'rtl' and document.lang = 'ar'
+    • Use Arabic-appropriate font: 'Tajawal' or 'Cairo' (Google Fonts)
+- When FR or EN is selected:
+    • Set document.dir = 'ltr'
+    • Use Inter font
+- Language switcher: 3 flag+code buttons in the navbar
+    🇩🇿 AR | 🇫🇷 FR | 🇬🇧 EN
+- Every single text element must use translations[lang].key syntax
+
+Translations to include (translate ALL of these):
+FRENCH → ARABIC → ENGLISH for:
+  - Navbar links: Accueil/الرئيسية/Home, Services/خدماتنا/Services,
+    Galerie/معرض الصور/Gallery, À propos/عن المستشفى/About,
+    Contact/اتصل بنا/Contact
+  - Hero title, subtitle, CTA buttons
+  - All section titles and descriptions
+  - Stats labels
+  - Service card titles and descriptions
+  - How-it-works steps
+  - Gallery section title
+  - Why choose us items
+  - Contact info labels
+  - Footer text
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌙 DARK MODE / LIGHT MODE (REQUIRED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Toggle button in navbar (sun/moon icon from lucide-react)
+- Store in useState: const [darkMode, setDarkMode] = useState(false)
+- Apply 'dark' class to <html> element when dark mode is active
+- Use Tailwind dark: variants throughout ALL components
+- Light mode colors:
+    Background: #F8FBFF
+    Cards: #FFFFFF
+    Text: #1E3A5F
+    Navbar: white with shadow
+- Dark mode colors:
+    Background: #0F1923
+    Cards: #1A2535
+    Text: #E8F0FE
+    Navbar: #111827
+    Borders: rgba(255,255,255,0.1)
+- The toggle button should animate smoothly (rotate transition)
+- Save preference in localStorage
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 DESIGN — OFFICIAL + MODERN BALANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is a GOVERNMENT hospital. The design must feel:
+✅ Official, trustworthy, institutional
+✅ Modern, clean, elegant (NOT outdated)
+✅ Medical-grade professional
+
+To achieve the official feel:
+1. TOP GOVERNMENT BANNER (above navbar, 40px height):
+   - Algerian national colors: green left strip (#006233),
+     white center, red right strip (#D21034)
+   - Center text: "الجمهورية الجزائرية الديمقراطية الشعبية
+     | République Algérienne Démocratique et Populaire"
+   - Font size: 11px, centered, color: #1E3A5F
+   - Add a small Algerian crescent+star SVG icon (☪) on the left
+   - This banner disappears on mobile (hidden md:flex)
+
+2. OFFICIAL SEAL in the hero section:
+   - A styled circular badge with text "مؤسسة عمومية ذات طابع إداري"
+     and "Établissement Public à Caractère Administratif"
+   - Green border, official look
+
+3. Use a subtle watermark pattern in hero (very light geometric pattern)
+
+4. Ministry attribution in footer:
+   "تحت وصاية وزارة الصحة | Sous tutelle du Ministère de la Santé"
+
+Color Palette:
+- Navy Blue: #1E3A5F (primary)
+- Medical Blue: #2196A6 (secondary/accents)
+- Algerian Green: #006233 (official accents, borders)
+- Success: #1B6B3A
+- Alert Red: #C62828
+- Pending: #F9A825
+- Light BG: #F8FBFF
+- White: #FFFFFF
+
+Typography:
+- Latin: 'Inter' (Google Fonts)
+- Arabic: 'Cairo' (Google Fonts)
+- Code/numbers: 'Roboto Mono'
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📐 PAGE SECTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — GOVERNMENT BANNER
+(described above — sticky at very top)
+
+SECTION 1 — NAVBAR (sticky below banner)
+- Left: Heart icon (lucide) + full hospital name (2 lines, bold)
+- Center: Navigation links with smooth scroll
+- Right: Language switcher (AR|FR|EN) + Dark mode toggle
+         + "Prendre RDV" button (#2196A6)
+- Mobile: hamburger with animated drawer
+
+SECTION 2 — HERO (min-height: 100vh)
+Gradient: #1E3A5F → #1a4a7a → #2196A6 (diagonal)
+Left column (60%):
+  - Official seal badge (top)
+  - H1: Big title (translated)
+  - Subtitle paragraph (translated)
+  - Two CTA buttons with arrow icons
+  - Stats row: 3 items with icons
+Right column (40%):
+  - Animated SVG: heartbeat ECG line pulsing
+    (use a CSS animation on an SVG path stroke-dashoffset)
+  - OR: A styled card showing "RDV en ligne" form preview
+Bottom: Curved wave SVG divider (white fill)
+
+SECTION 3 — STATS BAR (4 animated counters)
+Use useEffect + setInterval to count up to target number:
+  - 80 → Lits d'hospitalisation
+  - 10 → Lits de réanimation
+  - 25+ → Années d'expérience
+  - 1 → Couverture: Est de l'Algérie
+Each card: colored top border, icon, animated number, label
+
+SECTION 4 — SERVICES (6 cards, 3×2 grid)
+Cards with hover: scale-105, shadow-lg, colored icon background
+Services:
+  1. Chirurgie à Cœur Ouvert (Heart icon, #C62828)
+  2. Chirurgie Vasculaire (Activity icon, #2196A6)
+  3. Cardiologie Interventionnelle (Zap icon, #F9A825)
+  4. Chirurgie Congénitale (Baby icon, #1B6B3A)
+  5. Consultations Spécialisées (Stethoscope icon, #1E3A5F)
+  6. Imagerie Médicale (Scan icon, #006233)
+
+SECTION 5 — PHOTO GALLERY (REQUIRED — NEW)
+Title: "Notre Établissement en Images"
+Subtitle: "Découvrez nos installations et notre environnement médical"
+Layout: Masonry-style grid (3 columns on desktop, 2 tablet, 1 mobile)
+Use 6 real-looking image placeholders styled with gradients and icons:
+  Photo 1: "Bloc Opératoire" — gradient #1E3A5F→#2196A6, heart icon
+  Photo 2: "Service de Réanimation" — gradient #0F1923→#1E3A5F, activity icon
+  Photo 3: "Salle de Consultation" — gradient #006233→#1B6B3A, stethoscope icon
+  Photo 4: "Imagerie Médicale" — gradient #1a4a7a→#2196A6, scan icon
+  Photo 5: "Espace Patient" — gradient #2196A6→#006233, user icon
+  Photo 6: "Vue Extérieure" — gradient #1E3A5F→#006233, building icon
+Each placeholder:
+  - min-height: 220px (or 300px for col-span-2 cards)
+  - Shows icon + title + short description overlay
+  - On hover: overlay darkens, shows "Voir plus" button
+  - Has a badge: "📸 Photo" tag
+Note: Design so real <img> tags can replace placeholders later
+Add a note comment: {/* Replace gradient divs with <img> tags */}
+
+SECTION 6 — HOW IT WORKS (4 steps)
+Horizontal timeline on desktop, vertical on mobile
+Steps connected by a dashed line
+Each step: circle number (gradient fill) + title + description
+
+SECTION 7 — WHY CHOOSE US (dark bg: #1E3A5F)
+4 cards: Free care | Medical excellence | Regional coverage | Digital system
+Use glassmorphism effect on cards (backdrop-blur, semi-transparent)
+
+SECTION 8 — ABOUT THE HOSPITAL (NEW)
+Two columns:
+Left: Text block with:
+  - "Fondé en 1997 par le décret N°97/465"
+  - "Catégorie B — Établissement public"
+  - "Nommé en hommage au Moudjahid Djeghri Mokhtar"
+  - A "timeline" of 3 key milestones with years
+Right: Styled info card:
+  - Capacity details with progress-bar style indicators
+  - 80 lits total, 10 réanimation, 35 hommes, 35 femmes
+
+SECTION 9 — CONTACT & LOCATION
+Two columns:
+Left: Styled contact cards with icons
+  - Address with map-pin icon
+  - Hours (Mon-Fri 08h-16h)
+  - Emergency 24/7 (red badge)
+Right: Map placeholder (styled, with pin animation)
+      "6 km du centre · 4 km gare · 12 km aéroport"
+
+SECTION 10 — FOOTER
+Top: CTA band "Prenez soin de votre cœur — Prenez rendez-vous aujourd'hui"
+Main footer: 3 columns
+  - Logo + mission statement + "Soins gratuits"
+  - Quick links
+  - Ministry attribution + official decree number
+Bottom bar: Copyright + "Tous droits réservés"
+            Ministry badge: "Ministère de la Santé — Algérie"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ TECHNICAL REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Single file: LandingPage.jsx
+- Tailwind CSS only (no external CSS except Google Fonts import)
+- lucide-react for icons
+- Hooks used: useState, useEffect, useRef
+- Smooth scroll on nav link click
+- Navbar: solid white on scroll (useEffect + scroll listener)
+- Dark mode: class on <html>, saved in localStorage
+- Language: stored in useState, affects dir attribute
+- Counter animation: counts up when section enters viewport
+  (use IntersectionObserver)
+- All hover transitions: duration-300 ease-in-out
+- No placeholder lorem ipsum — use REAL translated content
+- Add a "Back to top" floating button (bottom-right, #2196A6)
+- Import Google Fonts: Inter + Cairo via useEffect on <head>
+- Fully accessible: aria-labels on buttons, alt on images
+- The page must be impressive enough for a graduation project jury
