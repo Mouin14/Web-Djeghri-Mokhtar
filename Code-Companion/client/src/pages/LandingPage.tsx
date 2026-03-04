@@ -475,7 +475,7 @@ export default function LandingPage() {
               </button>
 
               <Button
-                onClick={() => window.location.href = 'http://localhost:5174/'}
+                onClick={() => window.location.href = 'http://192.168.100.50'}
                 className="bg-secondary hover:bg-secondary/90 text-white shadow-md hover:shadow-lg transition-all rounded-full px-6"
               >
                 {t.btn_appointment}
@@ -516,7 +516,7 @@ export default function LandingPage() {
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
             </div>
-            <Button onClick={() => window.location.href = 'http://localhost:5174/'} className="w-full bg-secondary text-white py-6 text-lg">{t.btn_appointment}</Button>
+            <Button onClick={() => window.location.href = 'http://192.168.100.50'} className="w-full bg-secondary text-white py-6 text-lg">{t.btn_appointment}</Button>
           </div>
         )}
       </header>
@@ -543,7 +543,7 @@ export default function LandingPage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mt-4">
-                <Button onClick={() => window.location.href = 'http://localhost:5174/'} size="lg" className="bg-white text-[#1E3A5F] hover:bg-gray-100 rounded-full text-base font-semibold px-8 h-14 shadow-lg flex items-center gap-2">
+                <Button onClick={() => window.location.href = 'http://192.168.100.50'} size="lg" className="bg-white text-[#1E3A5F] hover:bg-gray-100 rounded-full text-base font-semibold px-8 h-14 shadow-lg flex items-center gap-2">
                   {t.hero_btn_primary}
                   <ArrowRight className={`w-5 h-5 ${lang === 'ar' ? 'rotate-180' : ''}`} />
                 </Button>
