@@ -1,25 +1,27 @@
-
-import { LOCAL_IMAGE_NAMES } from '../assets/local_images';
+import logoImg from '../assets/logo.png';
+import image0 from '../assets/image_0.png';
+import image1 from '../assets/image_1.png';
+import image2 from '../assets/image_2.png';
+import image3 from '../assets/image_3.png';
+import image4 from '../assets/image_4.png';
 
 let ACTIVE_SOURCE = 'LOCAL';
 
-const LOCAL_PATH = '/src/assets/'; // Adjusted path for Vite
-
 const USER_LOCAL_ASSETS = {
-    LOGO: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.LOGO}`,
+    LOGO: logoImg,
     FACILITY: {
-        ENTRANCE: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.ENTRANCE}`,
-        EXTERIOR: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.EXTERIOR}`,
-        RECEPTION: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.RECEPTION}`,
-        WARD: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.WARD}`,
-        STAFF_GROUP: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.STAFF_GROUP}`,
-        THEATRE: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.EXTERIOR}`, // Fallback
-        LAB: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.WARD}`, // Fallback
-        MRI: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.RECEPTION}`, // Fallback
-        RECOVERY: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.WARD}`, // Fallback
-        CORRIDOR: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.WARD}`, // Fallback
-        LOUNGE: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.RECEPTION}`, // Fallback
-        INTENSIVE: `${LOCAL_PATH}${LOCAL_IMAGE_NAMES.FACILITY.WARD}`, // Fallback
+        ENTRANCE: image0,
+        EXTERIOR: image1,
+        RECEPTION: image2,
+        WARD: image3,
+        STAFF_GROUP: image4,
+        THEATRE: image1,   // Fallback
+        LAB: image3,       // Fallback
+        MRI: image2,       // Fallback
+        RECOVERY: image3,  // Fallback
+        CORRIDOR: image3,  // Fallback
+        LOUNGE: image2,    // Fallback
+        INTENSIVE: image3, // Fallback
     }
 };
 

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { X, FileText, Image as ImageIcon } from 'lucide-react';
 
 /**
@@ -22,7 +22,7 @@ const DossiersListModal = memo(({ dossiers, onClose }) => (
                         <FileText className="w-8 h-8 text-contrast-muted opacity-40" />
                     </div>
                     <h3 className="text-lg font-medium text-contrast-heading">Aucun dossier trouvé</h3>
-                    <p className="text-contrast-muted">Ce patient n'a pas encore d'historique médical.</p>
+                    <p className="text-contrast-muted">Ce patient n&apos;a pas encore d&apos;historique médical.</p>
                 </div>
             ) : (
                 <div className="space-y-6">

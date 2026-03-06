@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { Plus, ChevronRight, Activity, UserCircle } from 'lucide-react';
 import usePatientAppointments from '../hooks/usePatientAppointments';
 import LoadingSpinner from '../components/appointments/LoadingSpinner';
@@ -19,7 +19,7 @@ const PatientAppointments = () => {
         step, nextStep, prevStep, isStepValid,
         formData, setFormData,
         formLoading, formError,
-        selectedImages, imagePreviews,
+        imagePreviews,
         handleImageChange, removeImage, handleSubmit,
         handleDelete,                                  // ← was missing from destructuring
         showDossiersModal, setShowDossiersModal, selectedRdv,

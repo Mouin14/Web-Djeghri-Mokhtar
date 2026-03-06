@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import {
     Plus, X, AlertCircle, CheckCircle, ShieldCheck,
     Image as ImageIcon, Info, ArrowLeft, ArrowRight,
@@ -153,7 +153,7 @@ const BookingModal = memo(({
                                             <div className="space-y-6">
                                                 <div className="space-y-2">
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Registry Motif</p>
-                                                    <p className="text-sm font-medium text-slate-700 dark:text-slate-200 italic leading-relaxed">"{formData.motif}"</p>
+                                                    <p className="text-sm font-medium text-slate-700 dark:text-slate-200 italic leading-relaxed">&quot;{formData.motif}&quot;</p>
                                                 </div>
                                                 <div className="space-y-2">
                                                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Diagnostics Attached</p>

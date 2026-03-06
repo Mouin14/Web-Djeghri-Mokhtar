@@ -1,0 +1,235 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #F8FBFF;
+  --foreground: #1E3A5F;
+  --card: #FFFFFF;
+  --card-foreground: #1E3A5F;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E3A5F;
+  --primary: #1E3A5F;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2196A6;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E8F0FE;
+  --muted-foreground: #5A7A9A;
+  --accent: #006233;
+  --accent-foreground: #FFFFFF;
+  --destructive: #C62828;
+  --destructive-foreground: #FFFFFF;
+  --border: #D4E4F4;
+  --input: #E8F0FE;
+  --ring: #2196A6;
+  --success: #1B6B3A;
+  --warning: #F9A825;
+  --radius: 0.75rem;
+  --emergency: #C62828;
+  --emergency-glow: rgba(198, 40, 40, 0.4);
+
+  /* Font mappings for Vite (matching index.html imports) */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-arabic: 'Cairo', system-ui, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+.dark {
+  --background: #0F1923;
+  --foreground: #E8F0FE;
+  --card: #1A2535;
+  --card-foreground: #E8F0FE;
+  --popover: #1A2535;
+  --popover-foreground: #E8F0FE;
+  --primary: #E8F0FE;
+  --primary-foreground: #0F1923;
+  --secondary: #2196A6;
+  --secondary-foreground: #FFFFFF;
+  --muted: #243447;
+  --muted-foreground: #8AABC8;
+  --accent: #1B6B3A;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF5350;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #243447;
+  --ring: #2196A6;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-arabic: var(--font-arabic);
+  --font-mono: var(--font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.1);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.1);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ecg-line {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bounce-pin {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-ecg {
+  stroke-dasharray: 1000;
+  animation: ecg-line 3s linear infinite;
+}
+
+.animate-bounce-pin {
+  animation: bounce-pin 1s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.7);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(198, 40, 40, 0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+@keyframes emergency-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--emergency-glow);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(198, 40, 40, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(198, 40, 40, 0);
+    transform: scale(1);
+  }
+}
+
+.animate-emergency {
+  animation: emergency-pulse 1.5s ease-in-out infinite;
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10;
+}
+
+.glass-dark {
+  @apply bg-slate-900/80 backdrop-blur-xl border border-white/10;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/30 transition-colors;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .xs\:block {
+    display: block;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Image as ImageIcon, Eye } from 'lucide-react';
 import StatusBadge from '../../Shared/StatusBadge';
 

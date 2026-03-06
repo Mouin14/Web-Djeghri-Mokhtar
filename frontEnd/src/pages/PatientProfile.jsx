@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../lib/axios';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,18 +21,15 @@ const PatientProfile = () => {
         new_password_confirmation: ''
     });
 
-    useEffect(() => {
-        fetchProfile();
-    }, []);
-
-    const fetchProfile = async () => {
+    const fetchProfile = useCallback(async () => {
         try {
             const response = await axios.get('/api/patient/profile');
-            if (response.data.success) {
-                setProfile(response.data.data);
+            if (response.data.success && response.data.data) {
+                const data = response.data.data;
+                setProfile(data);
                 setFormData({
-                    email: response.data.data.email,
-                    telephone: response.data.data.telephone || '',
+                    email: data.email || '',
+                    telephone: data.telephone || '',
                     current_password: '',
                     new_password: '',
                     new_password_confirmation: ''
@@ -46,7 +43,11 @@ const PatientProfile = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [navigate]);
+
+    useEffect(() => {
+        fetchProfile();
+    }, [fetchProfile]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

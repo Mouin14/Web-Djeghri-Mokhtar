@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import {
     Calendar, Clock, FileText, Image as ImageIcon,
     Trash2, CheckCircle, AlertCircle,
@@ -13,6 +13,7 @@ const formatDate = (dateString) => {
 const DoctorAssignedIcon = memo(({ exists }) =>
     exists ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />
 );
+DoctorAssignedIcon.displayName = 'DoctorAssignedIcon';
 
 /**
  * AppointmentCard — a single patient appointment card.
@@ -79,7 +80,7 @@ const AppointmentCard = memo(({ rdv, onDelete, onViewDossier }) => (
             {/* Reason + images count */}
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800">
                 <p className="text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2 italic">
-                    "{rdv.reason}"
+                    &quot;{rdv.reason}&quot;
                 </p>
                 {rdv.images?.length > 0 && (
                     <div className="flex items-center gap-3 mt-4 text-[10px] font-black text-brand-primary dark:text-brand-success uppercase tracking-widest">
@@ -89,7 +90,7 @@ const AppointmentCard = memo(({ rdv, onDelete, onViewDossier }) => (
                 )}
                 {rdv.status === 'cancelled' && rdv.cancellation_reason && (
                     <div className="mt-4 p-4 bg-red-500/10 rounded-2xl border border-red-500/20">
-                        <p className="text-[9px] font-black text-red-500 uppercase tracking-widest mb-1">Motif d'annulation</p>
+                        <p className="text-[9px] font-black text-red-500 uppercase tracking-widest mb-1">Motif d&apos;annulation</p>
                         <p className="text-xs text-slate-600 dark:text-slate-300">{rdv.cancellation_reason}</p>
                     </div>
                 )}

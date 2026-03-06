@@ -65,7 +65,7 @@ const PatientsManagement = () => {
     const fetchPatients = useCallback(async () => {
         try {
             const response = await axios.get('/api/admin/patients');
-            setPatients(response.data.data);
+            setPatients(Array.isArray(response.data.data) ? response.data.data : []);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching patients:', error);
@@ -413,6 +413,7 @@ const PatientsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
                                                         required
                                                         placeholder="DOE"
+                                                        autoComplete="family-name"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -424,6 +425,7 @@ const PatientsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
                                                         required
                                                         placeholder="Jane"
+                                                        autoComplete="given-name"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -460,6 +462,7 @@ const PatientsManagement = () => {
                                                         value={formData.date_naissance}
                                                         onChange={(e) => setFormData({ ...formData, date_naissance: e.target.value })}
                                                         required
+                                                        autoComplete="bday"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -471,6 +474,7 @@ const PatientsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, adresse: e.target.value })}
                                                         required
                                                         placeholder="Cité 123, Alger"
+                                                        autoComplete="street-address"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -499,6 +503,7 @@ const PatientsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                         required
                                                         placeholder="jane.doe@example.com"
+                                                        autoComplete="email"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -511,6 +516,7 @@ const PatientsManagement = () => {
                                                             onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
                                                             required
                                                             placeholder="+213..."
+                                                            autoComplete="tel"
                                                             className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                         />
                                                     </div>
@@ -525,6 +531,7 @@ const PatientsManagement = () => {
                                                             required={!editingPatient}
                                                             minLength={8}
                                                             placeholder={editingPatient ? "Keep empty to preserve" : "min. 8 characters"}
+                                                            autoComplete="new-password"
                                                             className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                         />
                                                     </div>

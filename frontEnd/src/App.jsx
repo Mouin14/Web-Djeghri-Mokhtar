@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Landing from './pages/Landing';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import DoctorDashboard from './pages/DoctorDashboard';
@@ -8,6 +7,7 @@ import PatientProfile from './pages/PatientProfile';
 import Layout from './components/Layout';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 /**
  * Dashboard routes have their own full-page sidebar layout.
@@ -31,7 +31,7 @@ const AppRoutes = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -39,8 +39,6 @@ const AppRoutes = () => {
   );
 };
 
-
-import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (

@@ -63,7 +63,7 @@ const DoctorsManagement = () => {
     const fetchMedecins = useCallback(async () => {
         try {
             const response = await axios.get('/api/admin/medecins');
-            setMedecins(response.data.data);
+            setMedecins(Array.isArray(response.data.data) ? response.data.data : []);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching doctors:', error);
@@ -399,6 +399,7 @@ const DoctorsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
                                                         required
                                                         placeholder="DOE"
+                                                        autoComplete="family-name"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -410,6 +411,7 @@ const DoctorsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
                                                         required
                                                         placeholder="John"
+                                                        autoComplete="given-name"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -438,6 +440,7 @@ const DoctorsManagement = () => {
                                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                         required
                                                         placeholder="john.doe@hospital.com"
+                                                        autoComplete="email"
                                                         className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                     />
                                                 </div>
@@ -466,6 +469,7 @@ const DoctorsManagement = () => {
                                                             required={!editingMedecin}
                                                             minLength={8}
                                                             placeholder={editingMedecin ? "Keep empty to preserve" : "min. 8 characters"}
+                                                            autoComplete="new-password"
                                                             className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                         />
                                                     </div>
@@ -501,6 +505,7 @@ const DoctorsManagement = () => {
                                                             onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
                                                             required
                                                             placeholder="+213..."
+                                                            autoComplete="tel"
                                                             className="w-full px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 focus:border-brand-primary rounded-[2rem] outline-none transition-all text-slate-900 dark:text-white font-medium shadow-inner"
                                                         />
                                                     </div>

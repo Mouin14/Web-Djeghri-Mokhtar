@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { X, Eye, FileText, Image as ImageIcon } from 'lucide-react';
 
 const formatDate = (dateString) => {

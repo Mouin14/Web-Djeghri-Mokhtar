@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 /**
  * Full-page loading spinner — memoized so it never re-renders.

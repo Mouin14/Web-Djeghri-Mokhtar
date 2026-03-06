@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { X, FileText, Download } from 'lucide-react';
 
 /**

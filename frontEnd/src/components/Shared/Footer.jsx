@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Phone, MapPin, Facebook, Instagram, Linkedin, ExternalLink, Heart } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { ASSETS } from '../../constants/images';
@@ -26,7 +25,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <p className="text-xl font-medium text-slate-400 dark:text-slate-500 leading-relaxed max-w-sm transition-colors">
-                            Algeria's premier center for cardiovascular excellence, defining the next era of robotic surgery and patient care.
+                            Algeria&apos;s premier center for cardiovascular excellence, defining the next era of robotic surgery and patient care.
                         </p>
                         <div className={`flex gap-5 ${isRTL ? 'justify-end' : ''}`}>
                             {[

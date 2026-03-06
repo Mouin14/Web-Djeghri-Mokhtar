@@ -41,7 +41,7 @@ const Navbar = ({ currentTheme, toggleTheme }) => {
 
                 {/* Brand Identity */}
                 <a
-                    href="http://192.168.100.50:8081/"
+                    href="/"
                     className={`flex items-center gap-4 group active:scale-95 transition-all ${isRTL ? 'flex-row-reverse' : ''}`}
                     aria-label="EHS Mokhtar Djaghri Home"
                 >
@@ -65,7 +65,7 @@ const Navbar = ({ currentTheme, toggleTheme }) => {
                         {NAV_ITEMS.map((item) => (
                             <a
                                 key={item}
-                                href={`http://192.168.100.50:8081/#${item.toLowerCase()}`}
+                                href={`/#${item.toLowerCase()}`}
                                 className="px-4 py-2 rounded-xl text-[10px] font-black text-slate-600 dark:text-slate-300 hover:text-brand-primary dark:hover:text-brand-success hover:bg-brand-primary/5 dark:hover:bg-white/5 uppercase tracking-widest transition-all relative group/item"
                             >
                                 <span className="relative z-10">{t.nav[item.toLowerCase()]}</span>
@@ -141,7 +141,7 @@ const Navbar = ({ currentTheme, toggleTheme }) => {
                         {NAV_ITEMS.map((item) => (
                             <a
                                 key={item}
-                                href={`http://192.168.100.50:8081/#${item.toLowerCase()}`}
+                                href={`/#${item.toLowerCase()}`}
                                 onClick={closeMenu}
                                 className="text-4xl font-black text-brand-primary dark:text-white tracking-tighter hover:text-brand-accent transition-colors active:scale-95"
                             >

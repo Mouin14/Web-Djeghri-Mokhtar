@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { X, XCircle } from 'lucide-react';
 
 /**
@@ -22,7 +22,7 @@ const CancelModal = memo(({ appointment, cancelReason, setCancelReason, cancelLo
 
             <form onSubmit={onSubmit} className="p-6 space-y-5">
                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Vous êtes sur le point d'annuler le rendez-vous de{' '}
+                    Vous êtes sur le point d&apos;annuler le rendez-vous de{' '}
                     <span className="font-bold text-gray-900 dark:text-white">
                         {appointment.patient_first_name} {appointment.patient_last_name}
                     </span>.
@@ -30,7 +30,7 @@ const CancelModal = memo(({ appointment, cancelReason, setCancelReason, cancelLo
 
                 <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        Motif d'annulation <span className="text-red-500">*</span>
+                        Motif d&apos;annulation <span className="text-red-500">*</span>
                     </label>
                     <textarea
                         value={cancelReason}
@@ -64,7 +64,7 @@ const CancelModal = memo(({ appointment, cancelReason, setCancelReason, cancelLo
                             </>
                         ) : (
                             <>
-                                <XCircle className="w-4 h-4" /> Confirmer l'annulation
+                                <XCircle className="w-4 h-4" /> Confirmer l&apos;annulation
                             </>
                         )}
                     </button>

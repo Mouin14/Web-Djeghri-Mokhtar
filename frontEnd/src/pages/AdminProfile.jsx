@@ -25,7 +25,7 @@ const AdminProfile = () => {
     const fetchProfile = useCallback(async () => {
         try {
             const response = await axios.get('/api/admin/profile');
-            if (response.data.success) {
+            if (response.data.success && response.data.data) {
                 const data = response.data.data;
                 setProfile(data);
                 setFormData({

@@ -3,16 +3,16 @@ import { createPortal } from 'react-dom';
 import axios from '../lib/axios';
 import {
     Search, X, User, Mail, Phone, MapPin, Calendar,
-    Clock, CheckCircle, XCircle, AlertCircle, ChevronRight
+    Clock, CheckCircle, XCircle, ChevronRight
 } from 'lucide-react';
 
 /* ─── helpers ──────────────────────────────────────────────────────────── */
 
 const STATUS_MAP = {
-    pending:   { label: 'En attente',  color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400', Icon: Clock },
-    confirmed: { label: 'Confirmé',    color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400', Icon: CheckCircle },
-    cancelled: { label: 'Annulé',      color: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400', Icon: XCircle },
-    completed: { label: 'Complété',    color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400', Icon: CheckCircle },
+    pending: { label: 'En attente', color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400', Icon: Clock },
+    confirmed: { label: 'Confirmé', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400', Icon: CheckCircle },
+    cancelled: { label: 'Annulé', color: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400', Icon: XCircle },
+    completed: { label: 'Complété', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400', Icon: CheckCircle },
 };
 
 const fmtDate = (d) => {
@@ -24,17 +24,17 @@ const fmtDate = (d) => {
 /* ─── PatientSearchBar ──────────────────────────────────────────────────── */
 
 const PatientSearchBar = ({ accentColor = 'brand-primary', inputClass = '' }) => {
-    const [query, setQuery]           = useState('');
-    const [results, setResults]       = useState([]);
-    const [showDrop, setShowDrop]     = useState(false);
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState([]);
+    const [showDrop, setShowDrop] = useState(false);
     const [loadingSearch, setLoadingSearch] = useState(false);
 
-    const [patient, setPatient]       = useState(null);
-    const [showModal, setShowModal]   = useState(false);
+    const [patient, setPatient] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [loadingModal, setLoadingModal] = useState(false);
 
     const debounceRef = useRef(null);
-    const wrapperRef  = useRef(null);
+    const wrapperRef = useRef(null);
 
     /* close dropdown on outside click */
     useEffect(() => {
@@ -247,7 +247,7 @@ const PatientSearchBar = ({ accentColor = 'brand-primary', inputClass = '' }) =>
                                                                     )}
                                                                     {appt.reason && (
                                                                         <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-                                                                            "{appt.reason}"
+                                                                            &quot;{appt.reason}&quot;
                                                                         </p>
                                                                     )}
                                                                     {appt.status === 'cancelled' && appt.cancellation_reason && (

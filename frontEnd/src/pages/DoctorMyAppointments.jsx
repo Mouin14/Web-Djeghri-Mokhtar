@@ -1,4 +1,3 @@
-import React from 'react';
 import { Activity } from 'lucide-react';
 import useDoctorAppointments from '../hooks/useDoctorAppointments';
 import LoadingSpinner from '../components/appointments/LoadingSpinner';

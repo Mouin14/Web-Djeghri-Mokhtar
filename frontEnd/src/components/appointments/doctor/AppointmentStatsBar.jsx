@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { Calendar, CheckCircle, FileText } from 'lucide-react';
 
 /**

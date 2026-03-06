@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../lib/axios';
 import {
@@ -41,6 +41,41 @@ const AppointmentsManagement = () => {
     const [loadingDetails, setLoadingDetails] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
+
+    const fetchRendezVous = useCallback(async () => {
+        try {
+            const response = await axios.get('/api/admin/rendez-vous');
+            setRendezVous(Array.isArray(response.data.data) ? response.data.data : []);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching appointments:', error);
+            if (error.response?.status === 401) {
+                localStorage.removeItem('user');
+                navigate('/login');
+            }
+            setLoading(false);
+        }
+    }, [navigate]);
+
+    const fetchPatients = useCallback(async () => {
+        try {
+            const response = await axios.get('/api/admin/select/patients');
+            setPatients(Array.isArray(response.data.data) ? response.data.data : []);
+        } catch (error) {
+            console.error('Error fetching patients:', error);
+        }
+    }, []);
+
+    const fetchDoctors = useCallback(async () => {
+        try {
+            const response = await axios.get('/api/admin/select/doctors');
+            setDoctors(Array.isArray(response.data.data) ? response.data.data : []);
+        } catch (error) {
+            console.error('Error fetching doctors:', error);
+        }
+    }, []);
+
+
     useEffect(() => {
         const userData = localStorage.getItem('user');
         if (userData) {
@@ -58,40 +93,7 @@ const AppointmentsManagement = () => {
         fetchRendezVous();
         fetchPatients();
         fetchDoctors();
-    }, [navigate]);
-
-    const fetchRendezVous = async () => {
-        try {
-            const response = await axios.get('/api/admin/rendez-vous');
-            setRendezVous(response.data.data);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching appointments:', error);
-            if (error.response?.status === 401) {
-                localStorage.removeItem('user');
-                navigate('/login');
-            }
-            setLoading(false);
-        }
-    };
-
-    const fetchPatients = async () => {
-        try {
-            const response = await axios.get('/api/admin/select/patients');
-            setPatients(response.data.data);
-        } catch (error) {
-            console.error('Error fetching patients:', error);
-        }
-    };
-
-    const fetchDoctors = async () => {
-        try {
-            const response = await axios.get('/api/admin/select/doctors');
-            setDoctors(response.data.data);
-        } catch (error) {
-            console.error('Error fetching doctors:', error);
-        }
-    };
+    }, [navigate, fetchRendezVous, fetchPatients, fetchDoctors]);
 
 
     const openCreateModal = () => {
