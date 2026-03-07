@@ -636,12 +636,40 @@ export default function App() {
                                 </div>
                             ))}
                         </div>
-                        <div className="relative rounded-2xl overflow-hidden shadow-xl min-h-[350px] bg-muted">
-                            {/* Map Placeholder */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <p className="text-muted-foreground">Map View of {t.address}</p>
+                        <a
+                            href="https://maps.app.goo.gl/dCb24xvc4cZuaSkH6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative rounded-2xl overflow-hidden shadow-xl min-h-[350px] bg-muted group block border-2 border-transparent hover:border-[#2196A6]/30 transition-all duration-300 cursor-pointer"
+                        >
+                            {/* Embedded Google Map */}
+                            <iframe
+                                src="https://maps.google.com/maps?q=Plateau+Mansourah,+Constantine,+DZ&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                className="absolute inset-0 w-full h-full border-0 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-0 grayscale-[20%] group-hover:grayscale-0"
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Map Location"
+                            ></iframe>
+
+                            {/* Gradient Overlay for Text Readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent z-10 group-hover:via-background/40 transition-colors duration-300"></div>
+
+                            {/* Interactive UI Content */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center z-20 pb-8">
+                                <div className="w-14 h-14 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center shadow-2xl mb-4 group-hover:scale-110 group-active:scale-95 transition-transform duration-500 ring-4 ring-white/20 dark:ring-slate-800/20 translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100">
+                                    <MapPin className="w-7 h-7 text-[#C62828] group-hover:animate-bounce" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-[#2196A6] transition-colors">{t.hospitalName}</h3>
+                                <p className="text-sm font-medium text-foreground drop-shadow-md">{t.address}</p>
+
+                                <div className="mt-3 flex items-center gap-2 px-6 py-2.5 bg-[#2196A6] text-white text-sm font-semibold rounded-full shadow-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-[#1a7a87]">
+                                    <Globe className="w-4 h-4" />
+                                    <span>Google Maps</span>
+                                    <ArrowRight className="w-4 h-4 ml-1 -rotate-45" />
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </section>
