@@ -36,25 +36,25 @@
 }
 
 .dark {
-  --background: #0F1923;
-  --foreground: #E8F0FE;
-  --card: #1A2535;
-  --card-foreground: #E8F0FE;
-  --popover: #1A2535;
-  --popover-foreground: #E8F0FE;
+  --background: #080c14; /* Deeper twilight blue for calmer night feel */
+  --foreground: #F8FBFF; /* Clear high contrast text */
+  --card: #0f1622; /* Darker cards to blend nicely with background */
+  --card-foreground: #F8FBFF;
+  --popover: #0f1622;
+  --popover-foreground: #F8FBFF;
   --primary: #E8F0FE;
-  --primary-foreground: #0F1923;
-  --secondary: #2196A6;
+  --primary-foreground: #080c14;
+  --secondary: #25aabf; /* Slightly lighter teal for better pop in dark mode */
   --secondary-foreground: #FFFFFF;
-  --muted: #243447;
+  --muted: #172233; /* Distinct but deep muted color */
   --muted-foreground: #8AABC8;
-  --accent: #1B6B3A;
+  --accent: #208747; /* Slightly brighter green for dark mode contrast */
   --accent-foreground: #FFFFFF;
   --destructive: #EF5350;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: #243447;
-  --ring: #2196A6;
+  --border: rgba(255, 255, 255, 0.08); /* Minimal subtle borders */
+  --input: #172233;
+  --ring: #25aabf;
 }
 
 @theme inline {

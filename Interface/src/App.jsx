@@ -150,8 +150,8 @@ export default function App() {
                     <div className="flex items-center justify-between h-16 lg:h-20">
                         {/* Logo */}
                         <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#C62828]/10 flex items-center justify-center">
-                                <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-[#C62828] animate-heartbeat" />
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
+                                <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-destructive animate-heartbeat" />
                             </div>
                             <div className={`${isRtl ? "text-right" : "text-left"}`}>
                                 <div className="font-bold text-xs sm:text-sm text-foreground leading-tight truncate max-w-[120px] sm:max-w-none">{t.hospitalName}</div>
@@ -165,7 +165,7 @@ export default function App() {
                                 <button
                                     key={link.id}
                                     onClick={() => scrollToSection(link.id)}
-                                    className="text-sm font-medium text-foreground hover:text-[#2196A6] transition-colors"
+                                    className="text-sm font-medium text-foreground hover:text-secondary transition-colors"
                                 >
                                     {link.label}
                                 </button>
@@ -181,7 +181,7 @@ export default function App() {
                                         key={l}
                                         onClick={() => setLang(l)}
                                         className={`px-2 py-1 text-xs font-medium transition-colors ${lang === l
-                                            ? "bg-[#2196A6] text-white"
+                                            ? "bg-secondary text-secondary-foreground"
                                             : "text-foreground hover:bg-muted"
                                             }`}
                                     >
@@ -206,7 +206,7 @@ export default function App() {
                             {/* CTA Button */}
                             <Button
                                 onClick={() => window.location.href = LOGIN_URL}
-                                className="hidden sm:flex bg-[#2196A6] hover:bg-[#1a7a87] text-white"
+                                className="hidden sm:flex bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                             >
                                 {t.bookAppointment}
                             </Button>
@@ -224,54 +224,63 @@ export default function App() {
                 </div>
 
                 {/* Mobile Menu - Island Style */}
-                {mobileMenuOpen && (
-                    <div className="lg:hidden fixed inset-x-4 top-20 z-50">
-                        <div className="glass rounded-3xl p-6 shadow-2xl animate-fade-in-up border-primary/10">
-                            <div className="grid grid-cols-1 gap-2">
-                                {navLinks.map((link, i) => (
-                                    <button
-                                        key={link.id}
-                                        onClick={() => scrollToSection(link.id)}
-                                        className={`flex items-center gap-4 w-full py-4 px-5 text-foreground hover:bg-primary/5 rounded-2xl transition-all active:scale-95 ${isRtl ? "flex-row-reverse text-right" : ""}`}
+                {
+                    mobileMenuOpen && (
+                        <div className="lg:hidden fixed inset-x-4 top-20 z-50">
+                            <div className="glass rounded-3xl p-6 shadow-2xl animate-fade-in-up border-primary/10">
+                                <div className="grid grid-cols-1 gap-2">
+                                    {navLinks.map((link, i) => (
+                                        <button
+                                            key={link.id}
+                                            onClick={() => scrollToSection(link.id)}
+                                            className={`flex items-center gap-4 w-full py-4 px-5 text-foreground hover:bg-primary/5 rounded-2xl transition-all active:scale-95 ${isRtl ? "flex-row-reverse text-right" : ""}`}
+                                        >
+                                            <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-sm font-bold text-primary/60">
+                                                {String(i + 1).padStart(2, '0')}
+                                            </div>
+                                            <span className="font-semibold text-lg">{link.label}</span>
+                                        </button>
+                                    ))}
+
+                                    <div className="h-px bg-border my-4" />
+
+                                    <Button
+                                        onClick={() => window.location.href = LOGIN_URL}
+                                        className="w-full bg-secondary hover:bg-secondary/90 text-white py-8 text-xl rounded-2xl shadow-xl shadow-secondary/20"
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-sm font-bold text-primary/60">
-                                            {String(i + 1).padStart(2, '0')}
-                                        </div>
-                                        <span className="font-semibold text-lg">{link.label}</span>
-                                    </button>
-                                ))}
-
-                                <div className="h-px bg-border my-4" />
-
-                                <Button
-                                    onClick={() => window.location.href = LOGIN_URL}
-                                    className="w-full bg-secondary hover:bg-secondary/90 text-white py-8 text-xl rounded-2xl shadow-xl shadow-secondary/20"
-                                >
-                                    <Calendar className="w-6 h-6 mr-3" />
-                                    {t.bookAppointment}
-                                </Button>
+                                        <Calendar className="w-6 h-6 mr-3" />
+                                        {t.bookAppointment}
+                                    </Button>
+                                </div>
                             </div>
+                            {/* Overlay to close */}
+                            <div
+                                className="fixed inset-0 -z-10 bg-black/20 backdrop-blur-sm lg:hidden"
+                                onClick={() => setMobileMenuOpen(false)}
+                            />
                         </div>
-                        {/* Overlay to close */}
-                        <div
-                            className="fixed inset-0 -z-10 bg-black/20 backdrop-blur-sm lg:hidden"
-                            onClick={() => setMobileMenuOpen(false)}
-                        />
-                    </div>
-                )}
-            </nav>
+                    )
+                }
+            </nav >
 
             {/* Hero Section */}
-            <section id="hero" className="relative min-h-[85vh] sm:min-h-[90vh] overflow-hidden">
+            < section id="hero" className="relative min-h-[85vh] sm:min-h-[90vh] overflow-hidden" >
                 {/* Background Image */}
-                <div className="absolute inset-0">
+                < div className="absolute inset-0" >
                     <img
-                        src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1920&h=1080&fit=crop"
+                        src={darkMode
+                            ? "https://images.unsplash.com/photo-1542884748-2b87b36c6b90?w=1920&h=1080&fit=crop" // Night building image
+                            : "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1920&h=1080&fit=crop" // Day building image
+                        }
                         alt="Modern hospital building exterior"
                         className="w-full h-full object-cover scale-105 animate-pulse-slow"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
-                </div>
+                    {/* Gradient overlay adapting to dark mode to spotlight the center slowly */}
+                    <div className={`absolute inset-0 transition-colors duration-1000 ${darkMode
+                        ? "bg-gradient-to-b sm:bg-gradient-to-r from-[#0F1923]/95 via-[#0F1923]/70 to-[#0F1923]/40"
+                        : "bg-gradient-to-b sm:bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40"
+                        }`} />
+                </div >
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[65vh] sm:min-h-[70vh]">
@@ -338,30 +347,30 @@ export default function App() {
                                 </div>
 
                                 {/* Floating Stats Card */}
-                                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 w-48">
+                                <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-xl p-5 w-48 border border-border/50">
                                     <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-12 h-12 rounded-full bg-[#006233]/10 flex items-center justify-center">
-                                            <Heart className="w-6 h-6 text-[#006233]" />
+                                        <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                                            <Heart className="w-6 h-6 text-accent" />
                                         </div>
                                         <div>
-                                            <div className="text-2xl font-bold text-[#1E3A5F]">25+</div>
-                                            <div className="text-xs text-secondary-foreground">{t.statYears}</div>
+                                            <div className="text-2xl font-bold text-foreground">25+</div>
+                                            <div className="text-xs text-muted-foreground">{t.statYears}</div>
                                         </div>
                                     </div>
-                                    <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                                        <div className="h-full w-full bg-gradient-to-r from-[#006233] to-[#2196A6] rounded-full" />
+                                    <div className="h-1.5 bg-secondary/20 rounded-full overflow-hidden">
+                                        <div className="h-full w-full bg-gradient-to-r from-accent to-secondary rounded-full" />
                                     </div>
                                 </div>
 
                                 {/* ECG Animation Overlay */}
-                                <div className="absolute -top-4 -right-4 bg-[#1E3A5F] rounded-xl p-3 shadow-xl">
+                                <div className="absolute -top-4 -right-4 bg-primary dark:bg-slate-800 rounded-xl p-3 shadow-xl border border-border/50">
                                     <svg viewBox="0 0 100 40" className="w-20 h-8">
                                         <path
                                             d="M0,20 L15,20 L20,10 L25,30 L30,5 L35,35 L40,20 L55,20 L60,10 L65,30 L70,5 L75,35 L80,20 L100,20"
                                             fill="none"
-                                            stroke="#C62828"
+                                            stroke="currentColor"
                                             strokeWidth="2"
-                                            className="animate-ecg"
+                                            className="animate-ecg text-destructive"
                                         />
                                     </svg>
                                 </div>
@@ -369,10 +378,10 @@ export default function App() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Stats Section */}
-            <section ref={statsRef} className="py-20 sm:py-32 bg-background relative overflow-hidden">
+            < section ref={statsRef} className="py-20 sm:py-32 bg-background relative overflow-hidden" >
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
@@ -404,10 +413,10 @@ export default function App() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Services Section */}
-            <section id="services" className="py-24 sm:py-32 bg-muted/30">
+            < section id="services" className="py-24 sm:py-32 bg-muted/30" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
                         <div className={isRtl ? "text-right" : ""}>
@@ -423,7 +432,7 @@ export default function App() {
                                     className="w-full h-64 object-cover"
                                 />
                             </div>
-                            <div className="absolute -bottom-4 -left-4 bg-[#006233] text-white px-6 py-3 rounded-xl shadow-lg">
+                            <div className="absolute -bottom-4 -left-4 bg-accent text-accent-foreground px-6 py-3 rounded-xl shadow-lg border border-border/50">
                                 <div className="flex items-center gap-2">
                                     <Heart className="w-5 h-5" />
                                     <span className="font-semibold">6 {t.services}</span>
@@ -460,10 +469,10 @@ export default function App() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Gallery Section */}
-            <section id="gallery" className="py-24 sm:py-32 bg-background">
+            < section id="gallery" className="py-24 sm:py-32 bg-background" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{t.galleryTitle}</h2>
@@ -477,9 +486,9 @@ export default function App() {
                                 alt="Cardiac surgery operating room"
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/90 via-[#1E3A5F]/30 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 dark:from-background/95 dark:via-background/50 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                                <span className="px-4 py-1.5 bg-[#2196A6] rounded-full text-xs font-medium mb-4 inline-block">{t.photo1Badge}</span>
+                                <span className="px-4 py-1.5 bg-secondary rounded-full text-xs font-medium mb-4 inline-block shadow-sm">{t.photo1Badge}</span>
                                 <h3 className="text-2xl font-bold mb-2">{t.photo1Title}</h3>
                                 <p className="text-sm text-white/80 max-w-md">{t.photo1Desc}</p>
                             </div>
@@ -502,7 +511,7 @@ export default function App() {
                                     alt={photo.alt}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 dark:from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                     <h3 className="text-sm font-semibold">{photo.title}</h3>
                                 </div>
@@ -510,10 +519,10 @@ export default function App() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* How It Works Section */}
-            <section className="py-20 bg-muted/30">
+            < section className="py-20 bg-muted/30" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{t.howItWorksTitle}</h2>
@@ -530,8 +539,8 @@ export default function App() {
                             { icon: CheckCircle, title: t.step4Title, desc: t.step4Desc },
                         ].map((step, i) => (
                             <div key={i} className="relative text-center">
-                                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2196A6] flex items-center justify-center mb-6 shadow-lg relative z-10">
-                                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#006233] text-white text-sm font-bold flex items-center justify-center">
+                                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary dark:from-slate-800 dark:to-secondary/50 flex items-center justify-center mb-6 shadow-lg relative z-10 border border-border/50">
+                                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow-md">
                                         {i + 1}
                                     </span>
                                     <step.icon className="w-10 h-10 text-white" />
@@ -542,10 +551,10 @@ export default function App() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* About Section */}
-            <section id="about" className="py-20 bg-background">
+            < section id="about" className="py-20 bg-background" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         {/* Left - Image Grid */}
@@ -569,7 +578,7 @@ export default function App() {
                                 </div>
                             </div>
                             {/* Experience Badge */}
-                            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#1E3A5F] text-white px-8 py-4 rounded-2xl shadow-xl">
+                            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-primary dark:bg-slate-800 text-primary-foreground dark:text-white px-8 py-4 rounded-2xl shadow-xl border border-border/50">
                                 <div className="text-center">
                                     <div className="text-3xl font-bold">25+</div>
                                     <div className="text-xs text-white/80">{t.statYears}</div>
@@ -583,25 +592,25 @@ export default function App() {
                             <p className="text-lg text-muted-foreground mb-8">{t.aboutSubtitle}</p>
                             <div className="space-y-4 mb-10 text-muted-foreground">
                                 <p className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#006233] shrink-0 mt-0.5" />
+                                    <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                                     <span>{t.aboutFoundation}</span>
                                 </p>
                                 <p className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#006233] shrink-0 mt-0.5" />
+                                    <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                                     <span>{t.aboutCategory}</span>
                                 </p>
                                 <p className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#006233] shrink-0 mt-0.5" />
+                                    <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                                     <span>{t.aboutNaming}</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Contact Section */}
-            <section id="contact" className="py-20 bg-muted/30">
+            < section id="contact" className="py-20 bg-muted/30" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{t.contactTitle}</h2>
@@ -613,7 +622,7 @@ export default function App() {
                                 { icon: MapPin, label: t.addressLabel, value: t.address, sub: t.addressDetails, color: "#2196A6" },
                                 { icon: Clock, label: t.hoursLabel, value: t.hours, color: "#006233" },
                                 { icon: Activity, label: t.emergencyLabel, value: t.emergency, badge: true, color: "#C62828" },
-                                { icon: Phone, label: t.phoneLabel, value: t.phone, color: "#1E3A5F" },
+                                { icon: Phone, label: t.phoneLabel, value: t.phone, color: "#3B82F6" },
                             ].map((item, i) => (
                                 <div
                                     key={i}
@@ -629,7 +638,7 @@ export default function App() {
                                         <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{item.label}</div>
                                         <div className="font-semibold text-foreground flex items-center gap-2">
                                             {item.value}
-                                            {item.badge && <span className="px-2 py-0.5 bg-[#C62828] text-white text-[10px] rounded-full">24/7</span>}
+                                            {item.badge && <span className="px-2 py-0.5 bg-destructive text-white text-[10px] rounded-full">24/7</span>}
                                         </div>
                                         {item.sub && <div className="text-xs text-muted-foreground mt-1">{item.sub}</div>}
                                     </div>
@@ -672,10 +681,10 @@ export default function App() {
                         </a>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Footer */}
-            <footer className="bg-primary text-white py-16">
+            < footer className="bg-[#1E3A5F] dark:bg-[#06090e] text-white py-16 border-t border-white/5" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
                         <div className="flex items-center gap-3">
@@ -696,10 +705,11 @@ export default function App() {
                         <p>&copy; {new Date().getFullYear()} {t.hospitalName}. {t.copyright}</p>
                     </div>
                 </div>
-            </footer>
+            </footer >
 
             {/* Floating Emergency Button */}
-            <div className={`fixed bottom-8 ${isRtl ? "left-8" : "right-8"} z-[60] flex flex-col items-center gap-2 group`}>
+            < div className={`fixed bottom-8 ${isRtl ? "left-8" : "right-8"} z-[60] flex flex-col items-center gap-2 group`
+            }>
                 <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity bg-destructive text-white text-xs font-bold px-3 py-2 rounded-lg shadow-xl whitespace-nowrap pointer-events-none">
                     {t.emergency} 24/7
                 </div>
@@ -713,15 +723,15 @@ export default function App() {
                         SOS
                     </span>
                 </a>
-            </div>
+            </div >
 
             {/* Scroll Progress Bar */}
-            <div className="fixed top-0 left-0 w-full h-1 z-[100] pointer-events-none">
+            < div className="fixed top-0 left-0 w-full h-1 z-[100] pointer-events-none" >
                 <div
                     className="h-full bg-secondary transition-all duration-150"
                     style={{ width: `${Math.min((statsVisible ? 100 : 0) + (scrolled ? 30 : 0), 100)}%` }} // Simple progress estimate
                 />
-            </div>
+            </div >
         </div >
     );
 }
